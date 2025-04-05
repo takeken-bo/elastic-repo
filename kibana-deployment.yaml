@@ -20,6 +20,10 @@ spec:
             - containerPort: 5601
           env:
             - name: ELASTICSEARCH_HOSTS
-              value: "http://es-headless:9200"
-
-
+              value: "http://elasticsearch:9200"
+            - name: xpack.ml.enabled
+              value: "false"
+            - name: telemetry.enabled
+              value: "false"
+            - name: xpack.usage.collection.enabled
+              value: "false"
