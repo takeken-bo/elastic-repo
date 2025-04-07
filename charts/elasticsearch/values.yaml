@@ -1,0 +1,17 @@
+replicaCount: 1
+
+image:
+  repository: docker.elastic.co/elasticsearch/elasticsearch
+  tag: 8.15.3
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 9200
+  name: elasticsearch
+
+resources: {}
+storage:
+  size: 10Gi
+  className: manual
+
