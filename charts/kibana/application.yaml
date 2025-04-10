@@ -1,0 +1,22 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: kibana
+  namespace: argocd  # Argo CD が動いている namespace
+spec:
+  project: default
+
+  source:
+    repoURL: https://your.git.repo.url/elastic-repo.git  # ← Git URLに置き換えて
+    targetRevision: master
+    path: charts/kibana
+
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: elasticsearch
+
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+
