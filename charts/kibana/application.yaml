@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://your.git.repo.url/elastic-repo.git  # ← Git URLに置き換えて
+    repoURL: https://github.com/takeken-bo/elastic-repo.git
     targetRevision: master
     path: charts/kibana
 
