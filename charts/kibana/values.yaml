@@ -9,12 +9,7 @@ service:
 
 ingress:
   enabled: false
-    #extraEnvs:
-    #  - name: XPACK_SECURITY_ENABLED
-    #    value: "false"
-kibanaConfig:
-  kibana.yml: |
-    server.host: "0.0.0.0"
-    elasticsearch.hosts: [ "http://elasticsearch:9200" ]
-    xpack.security.enabled: false
-
+image:
+  repository: localhost:32000/my-kibana
+  tag: 8.15.3
+  pullPolicy: IfNotPresent
