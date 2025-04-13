@@ -8,8 +8,11 @@ spec:
 
   source:
     repoURL: https://github.com/takeken-bo/elastic-repo.git
-    targetRevision: master
+    targetRevision: HEAD
     path: charts/kibana
+    helm:
+      valueFiles:
+        - values.yaml
 
   destination:
     server: https://kubernetes.default.svc
