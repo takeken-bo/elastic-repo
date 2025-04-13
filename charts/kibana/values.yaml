@@ -9,7 +9,12 @@ service:
 
 ingress:
   enabled: false
-extraEnvs:
+    #extraEnvs:
+    #  - name: XPACK_SECURITY_ENABLED
+    #    value: "false"
+env:
+  - name: ELASTICSEARCH_HOSTS
+    value: "http://elasticsearch:9200"
   - name: XPACK_SECURITY_ENABLED
     value: "false"
 
