@@ -10,4 +10,4 @@ data:
     elasticsearch.hosts:
       -  "http://elasticsearch:9200"
     xpack.security.enabled: false
-
+    this.is.not.valid: true
