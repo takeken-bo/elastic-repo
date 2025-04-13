@@ -12,9 +12,9 @@ ingress:
     #extraEnvs:
     #  - name: XPACK_SECURITY_ENABLED
     #    value: "false"
-env:
-  - name: ELASTICSEARCH_HOSTS
-    value: "http://elasticsearch:9200"
-  - name: XPACK_SECURITY_ENABLED
-    value: "false"
+kibanaConfig:
+  kibana.yml: |
+    server.host: "0.0.0.0"
+    elasticsearch.hosts: [ "http://elasticsearch:9200" ]
+    xpack.security.enabled: false
 
