@@ -45,4 +45,3 @@ spec:
       nodePort: 32000
   selector:
     app: registry
-
