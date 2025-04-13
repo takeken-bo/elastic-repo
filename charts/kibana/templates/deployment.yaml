@@ -20,8 +20,8 @@ spec:
           ports:
             - containerPort: 5601
           env:
-            - name: ELASTICSEARCH_HOSTS
-              value: {{ .Values.elasticsearchHosts }}
-{{- if .Values.extraEnvs }}
+#            - name: ELASTICSEARCH_HOSTS
+#              value: {{ .Values.elasticsearchHosts }}
+#{{- if .Values.extraEnvs }}
 {{ toYaml .Values.extraEnvs | indent 12 }}
-{{- end }}
+#{{- end }}
