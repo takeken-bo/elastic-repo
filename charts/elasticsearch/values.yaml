@@ -13,5 +13,4 @@ service:
 resources: {}
 storage:
   size: 10Gi
-  className: manual
-
+  className: rook-ceph-block
