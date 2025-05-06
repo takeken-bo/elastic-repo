@@ -5,7 +5,7 @@ elasticsearchHosts: "http://elasticsearch:9200"
 service:
   type: NodePort
   port: 5601
-  nodePort: 35601
+  nodePort: 31601
 
 ingress:
   enabled: false
