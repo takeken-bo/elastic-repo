@@ -20,3 +20,6 @@ spec:
           imagePullPolicy: "{{ .Values.image.pullPolicy }}"
           ports:
             - containerPort: 5601
+          env:
+            - name: ELASTICSEARCH_HOST
+              value: "{{ .Values.elasticsearchHosts }}"

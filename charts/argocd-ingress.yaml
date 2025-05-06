@@ -1,0 +1,22 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: argocd-server-ingress
+  namespace: argocd
+  annotations:
+    nginx.ingress.kubernetes.io/access-log-path: /var/log/nginx/access.log  # アクセスログのパス設定
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"  # HTTPでも許可（テスト用）
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: argocd.local  # ← 環境に合わせて変更
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: argocd-server
+            port:
+              number: 80
+
