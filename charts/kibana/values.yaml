@@ -12,4 +12,4 @@ ingress:
 image:
   repository: localhost:32000/my-kibana
   tag: 8.15.4
-  pullPolicy: IfNotPresent
+  pullPolicy: Always
