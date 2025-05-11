@@ -46,6 +46,10 @@ spec:
             - name: ES_JAVA_OPTS
               # value: "-Xms1g -Xmx1g -Dxpack.security.enabled=false"
               value: "-Xms1g -Xmx1g"
+            - name: ES_PATH_CONF
+              value: /usr/share/elasticsearch/config
+            - name: ELASTICSEARCH_CONFIG_FILE
+              value: /usr/share/elasticsearch/config/custom-elasticsearch.yml
           ports:
             - containerPort: 9200
               name: http
@@ -55,7 +59,7 @@ spec:
             - name: elasticsearch-storage
               mountPath: /usr/share/elasticsearch/data
             - name: elasticsearch-config
-              mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
+              mountPath: /usr/share/elasticsearch/config/custom-elasticsearch.yml
               subPath: elasticsearch.yml
               readOnly: true
       volumes:
