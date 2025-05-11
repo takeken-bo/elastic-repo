@@ -13,6 +13,8 @@ spec:
     metadata:
       labels:
         app: elasticsearch
+      annotations:
+        checksum/esconfig: {{ .Values.esConfig | toYaml | sha256sum }}
     spec:
       securityContext:
         fsGroup: 1000
