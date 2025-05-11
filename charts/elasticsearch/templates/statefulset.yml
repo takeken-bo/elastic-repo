@@ -54,10 +54,15 @@ spec:
           volumeMounts:
             - name: elasticsearch-storage
               mountPath: /usr/share/elasticsearch/data
-                #      command:
-                # - "sh"
-                #- "-c"
-                #- "echo 'xpack.security.enabled: true' >> config/elasticsearch.yml; /usr/local/bin/docker-entrypoint.sh"
+            - name: elasticsearch-config
+              mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
+              subPath: elasticsearch.yml
+              readOnly: true
+        volumes:
+        - name: elasticsearch-config
+          configMap:
+            name: elasticsearch-config
+
   volumeClaimTemplates:
     - metadata:
         name: elasticsearch-storage
