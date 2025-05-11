@@ -59,8 +59,7 @@ spec:
             - name: elasticsearch-storage
               mountPath: /usr/share/elasticsearch/data
             - name: elasticsearch-config
-              mountPath: /usr/share/elasticsearch/config/custom-elasticsearch.yml
-              subPath: elasticsearch.yml
+              mountPath: /usr/share/elasticsearch/config
               readOnly: true
       volumes:
       - name: elasticsearch-config
