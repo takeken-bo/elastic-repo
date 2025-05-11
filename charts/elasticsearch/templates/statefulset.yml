@@ -42,7 +42,8 @@ spec:
             - name: cluster.initial_master_nodes
               value: "elasticsearch-0,elasticsearch-1"
             - name: ES_JAVA_OPTS
-              value: "-Xms1g -Xmx1g -Dxpack.security.enabled=false"
+              # value: "-Xms1g -Xmx1g -Dxpack.security.enabled=false"
+              value: "-Xms1g -Xmx1g"
           ports:
             - containerPort: 9200
               name: http
@@ -51,10 +52,10 @@ spec:
           volumeMounts:
             - name: elasticsearch-storage
               mountPath: /usr/share/elasticsearch/data
-          command:
-            - "sh"
-            - "-c"
-            - "echo 'xpack.security.enabled: true' >> config/elasticsearch.yml; /usr/local/bin/docker-entrypoint.sh"
+                #      command:
+                # - "sh"
+                #- "-c"
+                #- "echo 'xpack.security.enabled: true' >> config/elasticsearch.yml; /usr/local/bin/docker-entrypoint.sh"
   volumeClaimTemplates:
     - metadata:
         name: elasticsearch-storage
