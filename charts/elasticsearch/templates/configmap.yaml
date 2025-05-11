@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: elasticsearch-config
+  namespace: ela
+data:
+  elasticsearch.yml: {{ .Values.esConfig.elasticsearch.yml | indent 4 }}
+
