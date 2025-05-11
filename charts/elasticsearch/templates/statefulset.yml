@@ -54,7 +54,7 @@ spec:
           command:
             - "sh"
             - "-c"
-            - "echo 'xpack.security.enabled: false' >> config/elasticsearch.yml; /usr/local/bin/docker-entrypoint.sh"
+            - "echo 'xpack.security.enabled: true' >> config/elasticsearch.yml; /usr/local/bin/docker-entrypoint.sh"
   volumeClaimTemplates:
     - metadata:
         name: elasticsearch-storage
