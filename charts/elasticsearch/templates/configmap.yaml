@@ -4,8 +4,5 @@ metadata:
   name: elasticsearch-config
   namespace: {{ .Release.Namespace }}
 data:
-{{- with .Values.esConfig.elasticsearch }}
   elasticsearch.yml: |
-{{ . | indent 4 }}
-{{- end }}
-
+{{ index .Values.esConfig "elasticsearch.yml" | indent 4 }}
