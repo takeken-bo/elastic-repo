@@ -17,6 +17,7 @@ storage:
 
 esConfig:
   elasticsearch.yml: |
+    network.host: 0.0.0.0
     xpack.security.enabled: false
     xpack.security.http.ssl.enabled: false
     xpack.security.http.ssl.keystore.path: certs/node.p12
