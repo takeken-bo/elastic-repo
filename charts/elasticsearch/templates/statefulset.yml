@@ -58,10 +58,10 @@ spec:
               mountPath: /usr/share/elasticsearch/config/elasticsearch.yml
               subPath: elasticsearch.yml
               readOnly: true
-        volumes:
-        - name: elasticsearch-config
-          configMap:
-            name: elasticsearch-config
+      volumes:
+      - name: elasticsearch-config
+        configMap:
+          name: elasticsearch-config
 
   volumeClaimTemplates:
     - metadata:
