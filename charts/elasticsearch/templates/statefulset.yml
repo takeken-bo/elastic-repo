@@ -27,7 +27,7 @@ spec:
               mountPath: /usr/share/elasticsearch/data
         - name: copy-config
           image: busybox
-          command: ["sh", "-c", "cp -r /mnt/config/* /usr/share/elasticsearch/config/"]
+          command: ["sh", "-c", "cp -v /mnt/config/* /usr/share/elasticsearch/config/"]
           volumeMounts:
             - name: elasticsearch-config
               mountPath: /mnt/config
