@@ -17,4 +17,14 @@ storage:
 
 esConfig:
   elasticsearch.yml: |
-    xpack.security.enabled: false
+    xpack.security.enabled: true
+    xpack.security.http.ssl.enabled: true
+    xpack.security.http.ssl.keystore.path: certs/node.p12
+    xpack.security.http.ssl.keystore.password: ""
+    xpack.security.transport.ssl.enabled: true
+    xpack.security.transport.ssl.verification_mode: certificate
+    xpack.security.transport.ssl.keystore.path: certs/node.p12
+    xpack.security.transport.ssl.keystore.password: ""
+    xpack.security.transport.ssl.truststore.path: certs/ca.p12
+    xpack.security.transport.ssl.truststore.password: ""
+
