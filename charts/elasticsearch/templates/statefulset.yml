@@ -60,7 +60,7 @@ spec:
               mountPath: /usr/share/elasticsearch/data
             - name: elasticsearch-config
               mountPath: /usr/share/elasticsearch/config
-              readOnly: true
+              readOnly: false
       volumes:
       - name: elasticsearch-config
         configMap:
