@@ -25,6 +25,14 @@ spec:
           volumeMounts:
             - name: elasticsearch-storage
               mountPath: /usr/share/elasticsearch/data
+        - name: copy-config
+          image: busybox
+          command: ["sh", "-c", "cp -r /mnt/config/* /usr/share/elasticsearch/config/"]
+          volumeMounts:
+            - name: elasticsearch-config
+              mountPath: /mnt/config
+            - name: elasticsearch-config-volume
+              mountPath: /usr/share/elasticsearch/config
       containers:
         - name: elasticsearch
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -44,12 +52,7 @@ spec:
             - name: cluster.initial_master_nodes
               value: "elasticsearch-0,elasticsearch-1"
             - name: ES_JAVA_OPTS
-              # value: "-Xms1g -Xmx1g -Dxpack.security.enabled=false"
               value: "-Xms1g -Xmx1g"
-            - name: ES_PATH_CONF
-              value: /usr/share/elasticsearch/config
-            - name: ELASTICSEARCH_CONFIG_FILE
-              value: /usr/share/elasticsearch/config/custom-elasticsearch.yml
           ports:
             - containerPort: 9200
               name: http
@@ -58,13 +61,20 @@ spec:
           volumeMounts:
             - name: elasticsearch-storage
               mountPath: /usr/share/elasticsearch/data
-            - name: elasticsearch-config
+            - name: elasticsearch-config-volume
               mountPath: /usr/share/elasticsearch/config
-              readOnly: false
+            - name: certs
+              mountPath: /usr/share/elasticsearch/config/certs
+              readOnly: true
       volumes:
-      - name: elasticsearch-config
-        configMap:
-          name: elasticsearch-config
+        - name: elasticsearch-config
+          configMap:
+            name: elasticsearch-config
+        - name: elasticsearch-config-volume
+          emptyDir: {}
+        - name: certs
+          secret:
+            secretName: elastic-certs
 
   volumeClaimTemplates:
     - metadata:

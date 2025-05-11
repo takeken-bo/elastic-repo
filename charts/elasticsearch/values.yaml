@@ -28,12 +28,3 @@ esConfig:
     xpack.security.transport.ssl.truststore.path: certs/ca.p12
     xpack.security.transport.ssl.truststore.password: ""
 
-volumeMounts:
-  - name: certs
-    mountPath: /usr/share/elasticsearch/config/certs
-    readOnly: true
-
-volumes:
-  - name: certs
-    secret:
-      secretName: elastic-certs
