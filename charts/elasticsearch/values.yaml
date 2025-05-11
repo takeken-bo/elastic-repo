@@ -14,3 +14,26 @@ resources: {}
 storage:
   size: 10Gi
   className: rook-ceph-block
+
+esConfig:
+  elasticsearch.yml: |
+    xpack.security.enabled: true
+    xpack.security.http.ssl.enabled: true
+    xpack.security.http.ssl.keystore.path: certs/ca.p12
+    xpack.security.http.ssl.keystore.password: ""
+    xpack.security.transport.ssl.enabled: true
+    xpack.security.transport.ssl.verification_mode: certificate
+    xpack.security.transport.ssl.keystore.path: certs/ca.p12
+    xpack.security.transport.ssl.keystore.password: ""
+    xpack.security.transport.ssl.truststore.path: certs/ca.p12
+    xpack.security.transport.ssl.truststore.password: ""
+
+volumeMounts:
+  - name: certs
+    mountPath: /usr/share/elasticsearch/config/certs
+    readOnly: true
+
+volumes:
+  - name: certs
+    secret:
+      secretName: elastic-certs
