@@ -6,3 +6,19 @@ metadata:
 data:
   elasticsearch.yml: |
 {{ index .Values.esConfig "elasticsearch.yml" | indent 4 }}
+
+  jvm.options: |
+    -Xms1g
+    -Xmx1g
+    ## Add other JVM options here if needed
+
+  log4j2.properties: |
+    status = error
+    name = default
+    appender.console.type = Console
+    appender.console.name = console
+    appender.console.layout.type = PatternLayout
+    appender.console.layout.pattern = [%d{ISO8601}] [%t] %-5p %c %marker - %m%n
+    rootLogger.level = info
+    rootLogger.appenderRef.console.ref = console
+
